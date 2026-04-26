@@ -1,0 +1,33 @@
+<h2>Alunos</h2>
+<input id="nome" placeholder="Nome">
+<input id="nota" type="number" placeholder="Nota">
+<button onclick="addAluno()">Adicionar</button>
+<button onclick="filtrar()">Aprovados</button>
+
+<ul id="listaAlunos"></ul>
+
+<script>
+let alunos = [];
+
+function addAluno() {
+    let nome = document.getElementById("nome").value;
+    let nota = Number(document.getElementById("nota").value);
+
+    alunos.push({ nome, nota });
+    mostrar(alunos);
+}
+
+function mostrar(lista) {
+    let ul = document.getElementById("listaAlunos");
+    ul.innerHTML = "";
+
+    lista.forEach(a => {
+        ul.innerHTML += `<li>${a.nome} - ${a.nota}</li>`;
+    });
+}
+
+function filtrar() {
+    let aprovados = alunos.filter(a => a.nota >= 7);
+    mostrar(aprovados);
+}
+</script>
