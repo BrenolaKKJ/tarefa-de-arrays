@@ -1,0 +1,36 @@
+<h2>Filmes</h2>
+<input id="titulo">
+<input id="genero">
+<input id="ano">
+
+<button onclick="add()">Adicionar</button>
+<button onclick="filtrar()">Filtrar ação</button>
+
+<ul id="lista"></ul>
+
+<script>
+let filmes = [];
+
+function add() {
+    let titulo = document.getElementById("titulo").value;
+    let genero = document.getElementById("genero").value;
+    let ano = document.getElementById("ano").value;
+
+    filmes.push({ titulo, genero, ano });
+    mostrar(filmes);
+}
+
+function mostrar(lista) {
+    let ul = document.getElementById("lista");
+    ul.innerHTML = "";
+
+    lista.forEach(f => {
+        ul.innerHTML += `<li>${f.titulo} - ${f.genero}</li>`;
+    });
+}
+
+function filtrar() {
+    let f = filmes.filter(x => x.genero === "ação");
+    mostrar(f);
+}
+</script>
