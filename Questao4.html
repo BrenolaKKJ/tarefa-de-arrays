@@ -1,0 +1,20 @@
+<h2>Produtos com desconto</h2>
+<ul id="produtos"></ul>
+
+<script>
+const produtos = [
+    { nome: "Mouse", preco: 50 },
+    { nome: "Teclado", preco: 100 },
+    { nome: "Monitor", preco: 800 }
+];
+
+let desconto = produtos.map(p => {
+    return { nome: p.nome, preco: p.preco * 0.9 };
+});
+
+let ul = document.getElementById("produtos");
+
+desconto.forEach(p => {
+    ul.innerHTML += `<li>${p.nome} - ${p.preco}</li>`;
+});
+</script>
