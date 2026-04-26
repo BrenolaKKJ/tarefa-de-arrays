@@ -1,0 +1,29 @@
+<h2>Lista de Compras</h2>
+<input id="item">
+<button onclick="adicionar()">Adicionar</button>
+<ul id="lista"></ul>
+
+<script>
+let itens = [];
+
+function adicionar() {
+    let valor = document.getElementById("item").value;
+    itens.push(valor);
+    atualizar();
+}
+
+function remover(i) {
+    itens.splice(i, 1);
+    atualizar();
+}
+
+function atualizar() {
+    let ul = document.getElementById("lista");
+    ul.innerHTML = "";
+
+    for (let i = 0; i < itens.length; i++) {
+        ul.innerHTML += `<li>${itens[i]} 
+        <button onclick="remover(${i})">Remover</button></li>`;
+    }
+}
+</script>
