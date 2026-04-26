@@ -1,0 +1,31 @@
+<h2>Editar tarefas</h2>
+<input id="tarefa">
+<button onclick="add()">Adicionar</button>
+
+<ul id="lista"></ul>
+
+<script>
+let tarefas = [];
+
+function add() {
+    let t = document.getElementById("tarefa").value;
+    tarefas.push(t);
+    mostrar();
+}
+
+function editar(i) {
+    let novo = prompt("Novo valor:");
+    tarefas.splice(i, 1, novo);
+    mostrar();
+}
+
+function mostrar() {
+    let ul = document.getElementById("lista");
+    ul.innerHTML = "";
+
+    tarefas.forEach((t, i) => {
+        ul.innerHTML += `<li>${t} 
+        <button onclick="editar(${i})">Editar</button></li>`;
+    });
+}
+</script>
