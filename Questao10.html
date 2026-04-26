@@ -1,0 +1,32 @@
+<h2>Ranking</h2>
+<input id="jogador">
+<input id="pontos" type="number">
+
+<button onclick="add()">Adicionar</button>
+
+<ul id="ranking"></ul>
+
+<script>
+let jogadores = [];
+
+function add() {
+    let nome = document.getElementById("jogador").value;
+    let pontos = Number(document.getElementById("pontos").value);
+
+    jogadores.push({ jogador: nome, pontos });
+    mostrar();
+}
+
+function mostrar() {
+    let ul = document.getElementById("ranking");
+    ul.innerHTML = "";
+
+    let ranking = jogadores.map((j, i) => {
+        return `${i + 1}º ${j.jogador} - ${j.pontos}`;
+    });
+
+    ranking.forEach(r => {
+        ul.innerHTML += `<li>${r}</li>`;
+    });
+}
+</script>
