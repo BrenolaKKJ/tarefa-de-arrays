@@ -1,0 +1,26 @@
+<h2>Usuários</h2>
+<button onclick="filtrar()">Maiores de 18</button>
+<ul id="usuarios"></ul>
+
+<script>
+let usuarios = [
+    { nome: "Ana", idade: 15 },
+    { nome: "Carlos", idade: 22 }
+];
+
+function mostrar(lista) {
+    let ul = document.getElementById("usuarios");
+    ul.innerHTML = "";
+
+    lista.forEach(u => {
+        ul.innerHTML += `<li>${u.nome} - ${u.idade}</li>`;
+    });
+}
+
+function filtrar() {
+    let maiores = usuarios.filter(u => u.idade >= 18);
+    mostrar(maiores);
+}
+
+mostrar(usuarios);
+</script>
