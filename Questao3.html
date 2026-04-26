@@ -1,0 +1,35 @@
+<h2>Tarefas</h2>
+<input id="titulo">
+<select id="prioridade">
+<option>alta</option>
+<option>baixa</option>
+</select>
+
+<button onclick="addTarefa()">Adicionar</button>
+<ul id="listaTarefas"></ul>
+
+<script>
+let tarefas = [];
+
+function addTarefa() {
+    let titulo = document.getElementById("titulo").value;
+    let prioridade = document.getElementById("prioridade").value;
+
+    if (prioridade === "alta") {
+        tarefas.unshift({ titulo, prioridade });
+    } else {
+        tarefas.push({ titulo, prioridade });
+    }
+
+    mostrar();
+}
+
+function mostrar() {
+    let ul = document.getElementById("listaTarefas");
+    ul.innerHTML = "";
+
+    tarefas.forEach(t => {
+        ul.innerHTML += `<li>${t.titulo} (${t.prioridade})</li>`;
+    });
+}
+</script>
